@@ -1,4 +1,46 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541021
+AD-SOYAD:İbrahim Seha DOĞAN
 
-Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:BAŞLA
+
+// 1. Başlangıç Ayarları
+OyunuBaşlat()
+skor ← 0
+can ← maksimumCan
+seviye ← 1
+
+// 2. Oyun Döngüsü
+TEKRAR EDERKEN oyunDevamEdiyorMu()
+
+    // 2.1. Ortamı Analiz Et
+    çevreselVeri ← OrtamıAlgıla()
+
+    // 2.2. Durum Analizi ve Karar Verme
+    EĞER düşmanYakında(çevreselVeri) İSE
+        SavunVeyaKaç()
+    DEĞİLSE EĞER bonusYakında(çevreselVeri) İSE
+        BonusTopla()
+    DEĞİLSE
+        GüvenliİlerlemeYap()
+
+    // 2.3. Skoru Güncelle
+    skor ← SkoruGüncelle()
+
+    // 2.4. Seviye Artışı veya Zorluk Kontrolü
+    EĞER skor ≥ seviye * seviyeArtışEşiği İSE
+        seviye ← seviye + 1
+        ZorluğuArtır(seviye)
+
+    // 2.5. Oyuncu Sağlık Kontrolü
+    EĞER HasarAlındı() İSE
+        can ← can - HasarMiktarı()
+        EĞER can ≤ 0 İSE
+            oyunDevam ← FALSE
+
+SON
+
+OyunuBitir()
+SkoruKaydet(skor)
+
+BİTİR
+
